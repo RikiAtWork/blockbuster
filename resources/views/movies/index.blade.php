@@ -6,6 +6,19 @@
     <form action="{{route('peliculas.create')}}">
         <button type="submit" class="btn btn-light">Insertar</button>
     </form>
+
+    <form action="{{route("movies.filtro")}}" method="POST">
+        @method('POST');
+        @csrf
+        <label for="director"><strong>Búsqueda por director:</strong></label>
+        <select class="form-select" aria-label="Por defecto" name="director" id="director">
+            @foreach($directores as $director)
+                <option value="{{$director['id']}}">{{$director['director']}}</option>
+            @endforeach
+        </select>
+        <input type="submit" name="buscar" value="Buscar" class="btn btn-dark btn-block">
+    </form>
+
     <div class="content">
     @foreach($peliculas as $pelicula)
         <div class="card" style="width: 18rem;">

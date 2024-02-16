@@ -12,7 +12,17 @@ class PeliculasController extends Controller
     public function index()
     {
         $peliculas = Peliculas::all();
-        return view("movies.index", compact('peliculas'));
+        $directores = Peliculas::all();
+        return view("movies.index", compact('peliculas', 'directores'));
+    }
+
+    public function filtro(Request $request){
+        $director = $request->get('director');
+        $nombreDirector = Peliculas::findOrFail($director)->director;
+
+        $peliculas = Peliculas::all();
+        $peliculas = Peliculas::findOrFail($director);
+        return view('movies.busca', compact('nombreDirector', 'peliculas'));
     }
 
     /**

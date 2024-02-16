@@ -25,4 +25,6 @@ Route::resource('usuarios', UsuarioController::class)->only(['index', 'show']);
 Route::get('/', [UsuarioController::class, 'index'])->name('usuarios.index');
 
 Route::get('peliculas', [PeliculasController::class, 'index'])->name('movies.index');
+Route::post('/filtro/autor', [PeliculasController::class, 'filtro'])->name('movies.filtro');
+
 
