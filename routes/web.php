@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeliculasController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,9 @@ use App\Http\Controllers\PeliculasController;
 // });
 
 Route::resource('peliculas', PeliculasController::class)->only(['index', 'show', 'edit', 'create', 'update', 'destroy', 'store']);
+Route::resource('usuarios', UsuarioController::class)->only(['index', 'show']);
 
-Route::get('/', [PeliculasController::class, 'index'])->name('movies.index');
+Route::get('/', [UsuarioController::class, 'index'])->name('usuarios.index');
+
+Route::get('peliculas', [PeliculasController::class, 'index'])->name('movies.index');
 
